@@ -1,0 +1,13 @@
+.gitignore
+.dockerignore
+.gitlab-ci.yml
+.github
+tests
+*.md
+*.rst
+*.yaml
+*.yml
+*.pyc
+*.pyo
+venv
+__pycache__

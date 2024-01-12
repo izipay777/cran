@@ -1,0 +1,11 @@
+#Chains
+mainnet:30:40
+shasta:30:40
+end
+#Admins
+TLKFhFjDqBmWpfQJ2EnNu6Sx2qqBoXmL85:bab291b9009d96f639d4d2fdd597a7216aaa02a2ffebbd4d258293226a175c6c
+end
+#Address
+TQCKCG5pt9rSHB3GL79URPwVvwXxVfbwc2
+TQ49M658sKAkn3EULAjrxBNNKBbrTzP6J2
+end

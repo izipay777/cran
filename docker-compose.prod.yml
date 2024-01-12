@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  postgres:
+    profiles:
+      - donotstart
+    
+  faucet-monitor-balances:
+    restart: always
+  
+
+
+networks:
+  faucet:
+    external: true

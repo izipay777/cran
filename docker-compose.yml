@@ -1,0 +1,57 @@
+version: "3.8"
+
+services:
+  faucet-python:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    volumes:
+      - ./src:/app:rw
+    networks:
+      faucet:
+        aliases:
+          - faucet-python
+
+  postgres:
+    container_name: postgres
+    image: "postgres:13"
+    environment:
+      POSTGRES_DB: "faucet"
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "root"
+      PGDATA: "/data/postgres"
+    volumes:
+       - ./postgres:/data/postgres
+    restart: unless-stopped
+    networks:
+      faucet:
+        aliases:
+          - postgres
+    
+  faucet-monitor-balances:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: make monitor_balances
+    env_file:
+      - .env
+    container_name: faucet-monitor-balances
+    volumes:
+      - ./src:/app:rw
+    depends_on: 
+      - faucet-python
+    networks:
+      faucet:
+        aliases:
+          - faucet-monitor-balances
+  
+
+
+networks:
+  faucet:
+    external: true
